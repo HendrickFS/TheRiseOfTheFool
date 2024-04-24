@@ -1,0 +1,5 @@
+res://world/world.tscn
+res://player/player.tscn
+res://player/player.gd
+res://enemy/chaser.tscn
+res://enemy/chaser.gd

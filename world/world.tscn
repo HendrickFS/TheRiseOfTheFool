@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpeeucvou1ypq"]
+
+[ext_resource type="PackedScene" uid="uid://dn26busx8rdxi" path="res://player/player.tscn" id="1_p82kn"]
+[ext_resource type="PackedScene" uid="uid://c5sgcn4tdk74a" path="res://enemy/chaser.tscn" id="2_fhk4u"]
+
+[node name="world" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -1209.0
+offset_top = -756.0
+offset_right = 2167.0
+offset_bottom = 1364.0
+color = Color(0.137255, 0.294118, 0.219608, 1)
+
+[node name="player" parent="." instance=ExtResource("1_p82kn")]
+position = Vector2(537, 303)
+
+[node name="chaser" parent="." instance=ExtResource("2_fhk4u")]
+position = Vector2(42, 49)
