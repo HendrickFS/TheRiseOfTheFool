@@ -5,3 +5,5 @@ res://player/player.gd
 res://enemy/chaser.gd
 res://enemy/utilities/spawner.gd
 res://enemy/utilities/spawner.tscn
+res://player/attacks/slash.tscn
+res://player/attacks/slash.gd

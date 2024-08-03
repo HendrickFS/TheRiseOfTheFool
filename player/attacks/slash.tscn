@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvboj68ogc728"]
+
+[ext_resource type="Script" path="res://player/attacks/slash.gd" id="1_bnwv1"]
+[ext_resource type="Texture2D" uid="uid://doriau2nhfd8i" path="res://player/attacks/slash.png" id="1_swawt"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d7p57"]
+radius = 3.98554
+height = 94.0188
+
+[node name="slash" type="Area2D"]
+script = ExtResource("1_bnwv1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+rotation = 1.5708
+scale = Vector2(2, 0.914)
+texture = ExtResource("1_swawt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 2)
+shape = SubResource("CapsuleShape2D_d7p57")
