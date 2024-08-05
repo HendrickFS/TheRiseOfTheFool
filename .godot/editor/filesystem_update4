@@ -1,9 +1,7 @@
 res://player/player.tscn
 res://world/world.tscn
 res://enemy/chaser.tscn
-res://player/player.gd
-res://enemy/chaser.gd
-res://enemy/utilities/spawner.gd
 res://enemy/utilities/spawner.tscn
 res://player/attacks/slash.tscn
+res://items/exp.tscn
 res://player/attacks/slash.gd
