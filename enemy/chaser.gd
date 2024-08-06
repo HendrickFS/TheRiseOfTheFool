@@ -14,8 +14,11 @@ func _physics_process(delta):
 	
 	move_and_slide()
 
-func on_slash_collision():
+func death():
 	var exp_instance = exp.instantiate()
 	exp_instance.global_position = position
 	get_parent().add_child(exp_instance)
 	queue_free()
+	
+func on_slash_collision():
+	pass

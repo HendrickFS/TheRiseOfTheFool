@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dn26busx8rdxi"]
+[gd_scene load_steps=4 format=3 uid="uid://dn26busx8rdxi"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_jimce"]
+[ext_resource type="Texture2D" uid="uid://bg80tdih4bge3" path="res://player/assets/player.png" id="2_f81jk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n2n8a"]
-size = Vector2(40, 40)
+size = Vector2(39, 63)
 
 [node name="player" type="CharacterBody2D"]
 collision_layer = 2
@@ -11,11 +12,20 @@ collision_mask = 4
 script = ExtResource("1_jimce")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 offset_left = -20.0
 offset_top = -20.0
 offset_right = 20.0
 offset_bottom = 20.0
 color = Color(0.52549, 0, 0.545098, 1)
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-1, -23)
+scale = Vector2(3, 3)
+texture = ExtResource("2_f81jk")
+vframes = 6
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 2.5)
 shape = SubResource("RectangleShape2D_n2n8a")

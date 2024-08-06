@@ -25,4 +25,5 @@ func initialize(direction_vector, initial_speed):
 
 func _on_body_entered(body):
 	emit_signal("slash_collision")
+	body.death()
 	queue_free()
