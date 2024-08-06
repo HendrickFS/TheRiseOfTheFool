@@ -19,6 +19,13 @@ config/icon="res://icon.svg"
 
 project/assembly_name="The Rise Of The Fool"
 
+[layer_names]
+
+2d_physics/layer_1="Level"
+2d_physics/layer_2="Player"
+2d_physics/layer_3="Enemie"
+2d_physics/layer_4="Shot"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
