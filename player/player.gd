@@ -6,6 +6,8 @@ var attack_direction = Vector2.ZERO
 var slash_timer = 1
 var slash = load("res://player/attacks/slash.tscn")
 
+@onready var _animated_sprite: AnimatedSprite2D = $Sprite2D
+
 func _physics_process(delta):
 	var input = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	#verifica movimento
@@ -23,3 +25,17 @@ func _physics_process(delta):
 	velocity = input * speed
 	
 	move_and_slide()
+	_animate_player() #falta o ataque
+
+
+func _animate_player():	
+	if velocity.x == 0:
+		_animated_sprite.play("player_walk")
+	else:
+		if(velocity.x > 0):
+			_animated_sprite.flip_h = false
+			_animated_sprite.play("player_walk_side")
+		else:
+			_animated_sprite.flip_h = true
+			_animated_sprite.play("player_walk_side")
+

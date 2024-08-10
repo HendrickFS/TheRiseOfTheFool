@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bpeeucvou1ypq"]
+[gd_scene load_steps=5 format=3 uid="uid://bpeeucvou1ypq"]
 
 [ext_resource type="PackedScene" uid="uid://b0ii2ky1kdvy5" path="res://enemy/utilities/spawner.tscn" id="1_4xxv1"]
 [ext_resource type="PackedScene" uid="uid://dn26busx8rdxi" path="res://player/player.tscn" id="1_p82kn"]
 [ext_resource type="PackedScene" uid="uid://c5sgcn4tdk74a" path="res://enemy/chaser.tscn" id="2_fhk4u"]
+[ext_resource type="AudioStream" uid="uid://d41w6fclmsg6" path="res://future.ogg" id="4_oiw56"]
 
 [node name="world" type="Node2D"]
 
@@ -24,3 +25,7 @@ collision_mask = 0
 
 [node name="chaser" parent="." instance=ExtResource("2_fhk4u")]
 position = Vector2(42, 49)
+
+[node name="bg_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_oiw56")
+autoplay = true

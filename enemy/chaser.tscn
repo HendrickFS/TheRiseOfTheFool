@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://c5sgcn4tdk74a"]
+[gd_scene load_steps=12 format=3 uid="uid://c5sgcn4tdk74a"]
 
 [ext_resource type="Script" path="res://enemy/chaser.gd" id="1_cl04m"]
-[ext_resource type="Texture2D" uid="uid://b2mf8d5qy5i8j" path="res://enemy/assets/Saci.png" id="2_v6edm"]
+[ext_resource type="Texture2D" uid="uid://qyomoasfqrmy" path="res://enemy/assets/Curupira.png" id="2_pamqf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pdavc"]
 bg_color = Color(0.368627, 0.0313726, 0, 1)
@@ -10,10 +10,61 @@ corner_radius_top_right = 25
 corner_radius_bottom_right = 25
 corner_radius_bottom_left = 25
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ge1jx"]
+atlas = ExtResource("2_pamqf")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xs5uy"]
+atlas = ExtResource("2_pamqf")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gfqxw"]
+atlas = ExtResource("2_pamqf")
+region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hd2pe"]
+atlas = ExtResource("2_pamqf")
+region = Rect2(48, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wbbcu"]
+atlas = ExtResource("2_pamqf")
+region = Rect2(96, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kamyr"]
+atlas = ExtResource("2_pamqf")
+region = Rect2(0, 96, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pejhy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ge1jx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xs5uy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gfqxw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hd2pe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wbbcu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kamyr")
+}],
+"loop": true,
+"name": &"curupira_walk",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h3026"]
 size = Vector2(26, 42)
 
 [node name="chaser" type="CharacterBody2D"]
+texture_filter = 1
 collision_layer = 4
 collision_mask = 14
 script = ExtResource("1_cl04m")
@@ -31,13 +82,14 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_pdavc")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(-1, -22)
 scale = Vector2(2, 2)
-texture = ExtResource("2_v6edm")
-hframes = 2
-vframes = 2
+sprite_frames = SubResource("SpriteFrames_pejhy")
+animation = &"curupira_walk"
+frame = 3
+frame_progress = 0.505095
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -5)

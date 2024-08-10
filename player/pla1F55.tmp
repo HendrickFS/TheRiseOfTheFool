@@ -67,7 +67,6 @@ animations = [{
 size = Vector2(39, 63)
 
 [node name="player" type="CharacterBody2D"]
-texture_filter = 1
 collision_layer = 2
 collision_mask = 4
 script = ExtResource("1_jimce")
@@ -85,10 +84,9 @@ texture_filter = 1
 position = Vector2(-1, -23)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_3mjmn")
-animation = &"player_attack"
+animation = &"player_walk"
 autoplay = "player_walk"
-frame = 1
-frame_progress = 0.896978
+frame_progress = 0.58972
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 2.5)

@@ -4,5 +4,3 @@ res://enemy/chaser.tscn
 res://enemy/utilities/spawner.tscn
 res://player/attacks/slash.tscn
 res://items/exp.tscn
-res://enemy/chaser.gd
-res://player/attacks/slash.gd
