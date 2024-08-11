@@ -1,6 +1,8 @@
-ProgressBar
 Button
 Sprite2D
+TextureButton
+ColorRect
+ProgressBar
 TextureRect
 TileMap
 AudioStreamPlayer
@@ -10,5 +12,3 @@ Area2D
 CollisionShape2D
 Camera2D
 PanelContainer
-Node2D
-ColorRect

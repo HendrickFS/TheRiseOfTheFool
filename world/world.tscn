@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c5sgcn4tdk74a" path="res://enemy/chaser.tscn" id="2_fhk4u"]
 [ext_resource type="Texture2D" uid="uid://cep1l61n5dmgf" path="res://world/assets/Arvore.png" id="2_x4sv4"]
 [ext_resource type="AudioStream" uid="uid://d41w6fclmsg6" path="res://future.ogg" id="4_oiw56"]
-[ext_resource type="PackedScene" uid="uid://dt1rnijwp4318" path="res://player/player_experience.tscn" id="5_nn8u4"]
+[ext_resource type="PackedScene" uid="uid://dt1rnijwp4318" path="res://enemy/assets/player_experience.tscn" id="5_nn8u4"]
 [ext_resource type="PackedScene" uid="uid://baaoy7sdytdch" path="res://player/player_life.tscn" id="6_w0xnf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gbl4b"]

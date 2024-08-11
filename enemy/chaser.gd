@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var player = get_node("/root/world/player")
 var speed = 100
+var life = 20
 var damage = 10
 var exp_value = 15
 var exp = load("res://items/exp.tscn")
@@ -31,12 +32,14 @@ func _animate_chaser():
 		_animated_sprite.flip_h = true
 		_animated_sprite.play("curupira_walk")
 
-func death():
-	var exp_instance = exp.instantiate()
-	exp_instance.global_position = position
-	exp_instance.initialize(exp_value)
-	get_parent().add_child(exp_instance)
-	queue_free()
+func death(life_depleted):
+	life-=life_depleted
+	if(life<=0):
+		var exp_instance = exp.instantiate()
+		exp_instance.global_position = position
+		exp_instance.initialize(exp_value)
+		get_parent().add_child(exp_instance)
+		queue_free()
 	
 func on_slash_collision():
 	pass

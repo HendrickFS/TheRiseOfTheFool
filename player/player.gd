@@ -4,6 +4,7 @@ var speed = 150
 var attack_direction = Vector2.ZERO
 
 var slash_timer = 1
+var slash_damage = 15
 var slash = load("res://player/attacks/slash.tscn")
 
 var damage_timer = 1
@@ -15,11 +16,12 @@ var experience = 0
 var level = 0
 var required_level = 100 * (1.5)**level #100 é o custo base para passar nivel, a cada nivel o custo do nivel anterior ira ser multiplicado por 1.5
 signal experience_obtained(exp_value)
+signal player_level_up(new_exp_required)
 
 @onready var _animated_sprite: AnimatedSprite2D = $Sprite2D
 
 func _physics_process(delta):
-	var input = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var input = Input.get_vector("left", "right", "up", "down")
 	#verifica movimento
 	if (input[0] != 0 or input[1] != 0):
 		attack_direction = input
@@ -29,7 +31,7 @@ func _physics_process(delta):
 		slash_timer = 1
 		var slash_intance = slash.instantiate()
 		add_child(slash_intance)
-		slash_intance.initialize(Vector2(attack_direction), 300)
+		slash_intance.initialize(Vector2(attack_direction), 300, slash_damage)
 		
 	if damage_flag:
 		damage_timer-=delta
@@ -73,6 +75,12 @@ func gameover():
 func get_experience(exp_value):
 	experience+=exp_value
 	emit_signal("experience_obtained", experience)
+	if(experience >= required_level):
+		level += 1
+		experience = 0
+		required_level = 100 * (1.5)**level
+		level_up()
 	
 func level_up():
-	pass
+	emit_signal("player_level_up", required_level)
+	
