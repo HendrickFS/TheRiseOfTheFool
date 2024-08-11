@@ -8,11 +8,13 @@ var slash = load("res://player/attacks/slash.tscn")
 
 var damage_timer = 1
 var damage_flag = false
+signal player_damage(value)
 
 var life = 100
 var experience = 0
 var level = 0
 var required_level = 100 * (1.5)**level #100 é o custo base para passar nivel, a cada nivel o custo do nivel anterior ira ser multiplicado por 1.5
+signal experience_obtained(exp_value)
 
 @onready var _animated_sprite: AnimatedSprite2D = $Sprite2D
 
@@ -33,6 +35,10 @@ func _physics_process(delta):
 		damage_timer-=delta
 		if(damage_timer<=0):
 			damage_flag = false
+			
+	var group_members = get_tree().get_nodes_in_group("experience")
+	for emitter in group_members:
+		emitter.connect("exp_obtained", get_experience)
 		
 	
 	velocity = input * speed
@@ -57,9 +63,16 @@ func damage(damage_value):
 		life -= damage_value
 		damage_flag = true
 		damage_timer = 1
+		emit_signal("player_damage", damage_value)
 		if(life <= 0):
 			gameover()
 		
 func gameover():
 	get_tree().change_scene_to_file("res://interface/game_over.tscn")
 
+func get_experience(exp_value):
+	experience+=exp_value
+	emit_signal("experience_obtained", experience)
+	
+func level_up():
+	pass

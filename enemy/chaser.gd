@@ -2,7 +2,8 @@ extends CharacterBody2D
 
 @onready var player = get_node("/root/world/player")
 var speed = 100
-var damage = 50
+var damage = 10
+var exp_value = 15
 var exp = load("res://items/exp.tscn")
 @onready var _animated_sprite: AnimatedSprite2D = $Sprite2D
 
@@ -17,7 +18,8 @@ func _physics_process(delta):
 	move_and_slide()
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
-		collision.get_collider().damage(damage)
+		if(collision.get_collider().name == "player"):
+			collision.get_collider().damage(damage)
 	
 	_animate_chaser() 
 
@@ -32,6 +34,7 @@ func _animate_chaser():
 func death():
 	var exp_instance = exp.instantiate()
 	exp_instance.global_position = position
+	exp_instance.initialize(exp_value)
 	get_parent().add_child(exp_instance)
 	queue_free()
 	

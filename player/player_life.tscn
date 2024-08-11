@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://baaoy7sdytdch"]
+
+[ext_resource type="Script" path="res://player/player_life.gd" id="1_1tjue"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gcxjx"]
+bg_color = Color(0.337255, 0.698039, 0.109804, 1)
+
+[node name="PlayerLife" type="ProgressBar"]
+offset_left = -601.0
+offset_top = -14.0
+offset_right = 599.0
+offset_bottom = 13.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_gcxjx")
+value = 100.0
+script = ExtResource("1_1tjue")

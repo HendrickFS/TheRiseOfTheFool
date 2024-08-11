@@ -9,3 +9,8 @@ res://player/attacks/slash.gd
 res://game_over.gd
 res://enemy/chaser.gd
 res://interface/game_over.tscn
+res://player/player_life.tscn
+res://player/player_life.gd
+res://player/player_experience.tscn
+res://player/player_experience.gd
+res://items/exp.gd

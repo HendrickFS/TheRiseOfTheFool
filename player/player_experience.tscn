@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt1rnijwp4318"]
+
+[ext_resource type="Script" path="res://player/player_experience.gd" id="1_3dub2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cjpif"]
+bg_color = Color(0.270588, 0.6, 0.905882, 1)
+
+[node name="player_experience" type="ProgressBar"]
+offset_left = -379.0
+offset_top = -3.0
+offset_right = 380.0
+offset_bottom = 7.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_cjpif")
+show_percentage = false
+script = ExtResource("1_3dub2")
