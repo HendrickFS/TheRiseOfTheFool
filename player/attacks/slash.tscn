@@ -8,7 +8,7 @@ radius = 3.98554
 height = 94.0188
 
 [node name="slash" type="Area2D" groups=["attacks"]]
-collision_mask = 5
+collision_mask = 4
 script = ExtResource("1_bnwv1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

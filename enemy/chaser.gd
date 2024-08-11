@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var player = get_node("/root/world/player")
 var speed = 100
+var damage = 50
 var exp = load("res://items/exp.tscn")
 @onready var _animated_sprite: AnimatedSprite2D = $Sprite2D
 
@@ -9,13 +10,18 @@ func _physics_process(delta):
 	var group_members = get_tree().get_nodes_in_group("attacks")
 	for emitter in group_members:
 		emitter.connect("slash_collision", on_slash_collision)
+		
 	var direction = global_position.direction_to(player.global_position)
 	velocity = direction * speed
 	
 	move_and_slide()
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		collision.get_collider().damage(damage)
+	
 	_animate_chaser() 
 
-func _animate_chaser():	
+func _animate_chaser():
 	if(velocity.x > 0):
 		_animated_sprite.flip_h = false
 		_animated_sprite.play("curupira_walk")
