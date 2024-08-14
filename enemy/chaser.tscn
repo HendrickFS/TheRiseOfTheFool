@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c5sgcn4tdk74a"]
+[gd_scene load_steps=16 format=3 uid="uid://c5sgcn4tdk74a"]
 
 [ext_resource type="Script" path="res://enemy/chaser.gd" id="1_cl04m"]
 [ext_resource type="Texture2D" uid="uid://qyomoasfqrmy" path="res://enemy/assets/Curupira.png" id="2_pamqf"]
@@ -63,6 +63,59 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h3026"]
 size = Vector2(26, 42)
 
+[sub_resource type="Animation" id="Animation_fr2fo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_nl4nn"]
+resource_name = "damage"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xhbxd"]
+resource_name = "normal"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ysh37"]
+_data = {
+"RESET": SubResource("Animation_fr2fo"),
+"damage": SubResource("Animation_nl4nn"),
+"normal": SubResource("Animation_xhbxd")
+}
+
 [node name="chaser" type="CharacterBody2D"]
 texture_filter = 1
 collision_layer = 4
@@ -88,9 +141,14 @@ position = Vector2(-1, -22)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_pejhy")
 animation = &"curupira_walk"
-frame = 3
-frame_progress = 0.505095
+frame = 1
+frame_progress = 0.408224
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_h3026")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ysh37")
+}

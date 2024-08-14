@@ -50,15 +50,21 @@ func _physics_process(delta):
 
 
 func _animate_player():
-	if velocity.x == 0:
-		_animated_sprite.play("player_walk")
-	else:
-		if(velocity.x > 0):
-			_animated_sprite.flip_h = false
-			_animated_sprite.play("player_walk_side")
+	if life <= 0:
+		_animated_sprite.play("player_dies")
+	else:	
+		if velocity.x == 0:
+			if (velocity.y >= 0):
+				_animated_sprite.play("player_walk")
+			else:
+				_animated_sprite.play("player_walk_back")
 		else:
-			_animated_sprite.flip_h = true
-			_animated_sprite.play("player_walk_side")
+			if(velocity.x > 0):
+				_animated_sprite.flip_h = false
+				_animated_sprite.play("player_walk_side")
+			else:
+				_animated_sprite.flip_h = true
+				_animated_sprite.play("player_walk_side")
 			
 func damage(damage_value):
 	if !damage_flag:
@@ -70,6 +76,9 @@ func damage(damage_value):
 			gameover()
 		
 func gameover():
+	await get_tree().create_timer(0.1).timeout
+	set_physics_process(false)
+	await get_tree().create_timer(1).timeout
 	get_tree().change_scene_to_file("res://interface/game_over.tscn")
 
 func get_experience(exp_value):

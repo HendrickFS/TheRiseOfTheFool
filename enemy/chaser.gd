@@ -40,6 +40,10 @@ func death(life_depleted):
 		exp_instance.initialize(exp_value)
 		get_parent().add_child(exp_instance)
 		queue_free()
+	else:
+		$AnimationPlayer.play("damage") # inimigo pisca vermelho quando toma dano
+		await get_tree().create_timer(0.6).timeout
+		$AnimationPlayer.play("normal")
 	
 func on_slash_collision():
 	pass

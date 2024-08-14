@@ -1,27 +1,162 @@
-[gd_scene load_steps=3 format=3 uid="uid://ck7vi7alydh1c"]
+[gd_scene load_steps=9 format=3 uid="uid://ck7vi7alydh1c"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_nnkda"]
-[ext_resource type="Texture2D" uid="uid://btjowgygv0dre" path="res://interface/assets/Titulo.png" id="2_11yvc"]
+[ext_resource type="Texture2D" uid="uid://d13kv21pisyt5" path="res://interface/assets/fundo.png" id="2_cxrvm"]
+[ext_resource type="Texture2D" uid="uid://m7lcukmgbdcu" path="res://interface/assets/Fundo_personagem_lobisomem_titulo.png" id="2_ws1lu"]
+[ext_resource type="Texture2D" uid="uid://br3xmrh2qssdj" path="res://interface/assets/Fundo_com_personagem.png" id="3_2ydl3"]
+[ext_resource type="Texture2D" uid="uid://bbvwxh4txfc5r" path="res://interface/assets/Fundo_com_personagem_lobisomem.png" id="4_qybmh"]
+
+[sub_resource type="Animation" id="Animation_fh1ep"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D3:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D4:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Button:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2fseq"]
+resource_name = "intro"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D3:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D4:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Button:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(3.5, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wckk0"]
+_data = {
+"RESET": SubResource("Animation_fh1ep"),
+"intro": SubResource("Animation_2fseq")
+}
 
 [node name="menu" type="Node2D"]
 script = ExtResource("1_nnkda")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 1156.0
-offset_bottom = 649.0
-color = Color(0.119356, 0.15213, 0.373468, 1)
+[node name="Button" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+top_level = true
+texture_filter = 1
+offset_left = 353.0
+offset_top = 308.0
+offset_right = 528.0
+offset_bottom = 347.0
+scale = Vector2(2.33399, 2.33399)
+action_mode = 0
+text = "Iniciar"
+flat = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wckk0")
+}
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(575, 342)
+scale = Vector2(1.129, 1.129)
+texture = ExtResource("2_cxrvm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(584, 243)
-scale = Vector2(5.60065, 3.55208)
-texture = ExtResource("2_11yvc")
+modulate = Color(1, 1, 1, 0)
+position = Vector2(575, 342)
+scale = Vector2(1.129, 1.129)
+texture = ExtResource("3_2ydl3")
 
-[node name="Button" type="Button" parent="."]
-offset_left = 461.0
-offset_top = 427.0
-offset_right = 636.0
-offset_bottom = 466.0
-text = "Jogar"
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(575, 342)
+scale = Vector2(1.129, 1.129)
+texture = ExtResource("4_qybmh")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(575, 342)
+scale = Vector2(1.12854, 1.12854)
+texture = ExtResource("2_ws1lu")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
