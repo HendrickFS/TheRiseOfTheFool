@@ -11,3 +11,9 @@ res://interface/menu.tscn
 res://interface/game_win.tscn
 res://interface/main_menu.tscn
 res://enemy/chaser.gd
+res://world/scene_ontrol.gd
+res://interface/game_win.gd
+res://player/player_experience.gd
+res://world/levelup_control.gd
+res://player/player_life.gd
+res://player/player.gd

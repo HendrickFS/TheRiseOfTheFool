@@ -8,11 +8,13 @@ var exp_value = 15
 var exp = load("res://items/exp.tscn")
 @onready var _animated_sprite: AnimatedSprite2D = $Sprite2D
 
-func _physics_process(delta):
+func _ready():
 	var group_members = get_tree().get_nodes_in_group("attacks")
 	for emitter in group_members:
 		emitter.connect("slash_collision", on_slash_collision)
 		
+func _physics_process(delta):
+	
 	var direction = global_position.direction_to(player.global_position)
 	velocity = direction * speed
 	
@@ -21,6 +23,7 @@ func _physics_process(delta):
 		var collision = get_slide_collision(i)
 		if(collision.get_collider().name == "player"):
 			collision.get_collider().damage(damage)
+			position -= direction 
 	
 	_animate_chaser() 
 

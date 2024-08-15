@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bpeeucvou1ypq"]
+[gd_scene load_steps=14 format=3 uid="uid://bpeeucvou1ypq"]
 
 [ext_resource type="PackedScene" uid="uid://b0ii2ky1kdvy5" path="res://enemy/utilities/spawner.tscn" id="1_4xxv1"]
 [ext_resource type="Texture2D" uid="uid://cq8i3u02pgvfx" path="res://world/assets/Cenario1.png" id="1_44nia"]
@@ -44,22 +44,16 @@ sources/0 = SubResource("TileSetAtlasSource_gbl4b")
 [sub_resource type="LabelSettings" id="LabelSettings_nknnf"]
 font_size = 40
 
-[sub_resource type="LabelSettings" id="LabelSettings_848dy"]
-font_size = 19
-
-[sub_resource type="LabelSettings" id="LabelSettings_6iq30"]
-font_size = 13
-
 [sub_resource type="LabelSettings" id="LabelSettings_gw1fn"]
 font_size = 25
 
 [node name="world" type="Node2D"]
 
 [node name="background" type="TextureRect" parent="."]
-offset_left = -4080.0
-offset_top = -2421.0
-offset_right = 5890.0
-offset_bottom = 3191.0
+offset_left = -4570.0
+offset_top = -2518.0
+offset_right = 5400.0
+offset_bottom = 3094.0
 texture = ExtResource("1_44nia")
 stretch_mode = 1
 
@@ -115,7 +109,6 @@ label_settings = SubResource("LabelSettings_nknnf")
 autostart = true
 
 [node name="levelup_control" type="Control" parent="player/Camera2D/Control"]
-process_mode = 3
 anchors_preset = 0
 offset_left = 372.0
 offset_top = 176.0
@@ -125,7 +118,7 @@ script = ExtResource("8_bgkol")
 
 [node name="ColorRect" type="ColorRect" parent="player/Camera2D/Control/levelup_control"]
 layout_mode = 0
-offset_right = 340.0
+offset_right = 332.0
 offset_bottom = 362.0
 color = Color(0, 0, 0.6, 0.784314)
 
@@ -137,79 +130,17 @@ offset_right = 290.0
 offset_bottom = 311.0
 theme_override_constants/separation = 9
 
-[node name="HBoxContainer" type="HBoxContainer" parent="player/Camera2D/Control/levelup_control/upgrades_container"]
-custom_minimum_size = Vector2(0, 70)
+[node name="upgrade01" type="Button" parent="player/Camera2D/Control/levelup_control/upgrades_container"]
 layout_mode = 2
+text = "Botão 1"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="player/Camera2D/Control/levelup_control/upgrades_container/HBoxContainer"]
-custom_minimum_size = Vector2(200, 0)
+[node name="upgrade02" type="Button" parent="player/Camera2D/Control/levelup_control/upgrades_container"]
 layout_mode = 2
+text = "Botão 1"
 
-[node name="Label" type="Label" parent="player/Camera2D/Control/levelup_control/upgrades_container/HBoxContainer/VBoxContainer"]
+[node name="upgrade03" type="Button" parent="player/Camera2D/Control/levelup_control/upgrades_container"]
 layout_mode = 2
-text = "name"
-label_settings = SubResource("LabelSettings_848dy")
-
-[node name="Label2" type="Label" parent="player/Camera2D/Control/levelup_control/upgrades_container/HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-text = "description"
-label_settings = SubResource("LabelSettings_6iq30")
-autowrap_mode = 2
-
-[node name="upgrade01" type="Button" parent="player/Camera2D/Control/levelup_control/upgrades_container/HBoxContainer"]
-layout_mode = 2
-text = "Selecionar"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="player/Camera2D/Control/levelup_control/upgrades_container"]
-custom_minimum_size = Vector2(0, 70)
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="player/Camera2D/Control/levelup_control/upgrades_container/HBoxContainer2"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="player/Camera2D/Control/levelup_control/upgrades_container/HBoxContainer2/VBoxContainer"]
-layout_mode = 2
-text = "name"
-label_settings = SubResource("LabelSettings_848dy")
-
-[node name="Label2" type="Label" parent="player/Camera2D/Control/levelup_control/upgrades_container/HBoxContainer2/VBoxContainer"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-text = "description
-"
-label_settings = SubResource("LabelSettings_6iq30")
-autowrap_mode = 2
-
-[node name="upgrade02" type="Button" parent="player/Camera2D/Control/levelup_control/upgrades_container/HBoxContainer2"]
-layout_mode = 2
-text = "Selecionar"
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="player/Camera2D/Control/levelup_control/upgrades_container"]
-custom_minimum_size = Vector2(0, 70)
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="player/Camera2D/Control/levelup_control/upgrades_container/HBoxContainer3"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="player/Camera2D/Control/levelup_control/upgrades_container/HBoxContainer3/VBoxContainer"]
-layout_mode = 2
-text = "name"
-label_settings = SubResource("LabelSettings_848dy")
-
-[node name="Label2" type="Label" parent="player/Camera2D/Control/levelup_control/upgrades_container/HBoxContainer3/VBoxContainer"]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-text = "description
-"
-label_settings = SubResource("LabelSettings_6iq30")
-autowrap_mode = 2
-
-[node name="upgrade03" type="Button" parent="player/Camera2D/Control/levelup_control/upgrades_container/HBoxContainer3"]
-layout_mode = 2
-text = "Selecionar"
+text = "Botão 1"
 
 [node name="Label" type="Label" parent="player/Camera2D/Control/levelup_control"]
 layout_mode = 0
@@ -225,6 +156,6 @@ stream = ExtResource("4_oiw56")
 autoplay = true
 
 [connection signal="timeout" from="player/Camera2D/Control/Timer" to="player/Camera2D/Control" method="_on_timer_timeout"]
-[connection signal="pressed" from="player/Camera2D/Control/levelup_control/upgrades_container/HBoxContainer/upgrade01" to="player/Camera2D/Control/levelup_control" method="_on_upgrade_01_pressed"]
-[connection signal="pressed" from="player/Camera2D/Control/levelup_control/upgrades_container/HBoxContainer2/upgrade02" to="player/Camera2D/Control/levelup_control" method="_on_upgrade_02_pressed"]
-[connection signal="pressed" from="player/Camera2D/Control/levelup_control/upgrades_container/HBoxContainer3/upgrade03" to="player/Camera2D/Control/levelup_control" method="_on_upgrade_03_pressed"]
+[connection signal="pressed" from="player/Camera2D/Control/levelup_control/upgrades_container/upgrade01" to="player/Camera2D/Control/levelup_control" method="_on_upgrade_01_pressed"]
+[connection signal="pressed" from="player/Camera2D/Control/levelup_control/upgrades_container/upgrade02" to="player/Camera2D/Control/levelup_control" method="_on_upgrade_02_pressed"]
+[connection signal="pressed" from="player/Camera2D/Control/levelup_control/upgrades_container/upgrade03" to="player/Camera2D/Control/levelup_control" method="_on_upgrade_03_pressed"]

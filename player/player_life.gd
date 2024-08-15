@@ -1,6 +1,6 @@
 extends ProgressBar
 
-func _process(delta):
+func _ready():
 	var group_members = get_tree().get_nodes_in_group("player")
 	for emitter in group_members:
 		emitter.connect("player_damage", life_depleted)

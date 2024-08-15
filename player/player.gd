@@ -3,6 +3,7 @@ extends CharacterBody2D
 var speed = 150
 var attack_direction = Vector2.ZERO
 
+var slash_cooldown = 1
 var slash_timer = 1
 var slash_damage = 15
 var slash = load("res://player/attacks/slash.tscn")
@@ -20,6 +21,12 @@ signal player_level_up(new_exp_required)
 
 @onready var _animated_sprite: AnimatedSprite2D = $Sprite2D
 
+@onready var levelup_control = $Camera2D/Control/levelup_control
+
+func _ready():
+	levelup_control.connect("speed_up_signal", on_speed_up)
+	levelup_control.connect("attackspeed_up_signal", on_attackspeed_up)
+
 func _physics_process(delta):
 	var input = Input.get_vector("left", "right", "up", "down")
 	#verifica movimento
@@ -28,7 +35,7 @@ func _physics_process(delta):
 		
 	slash_timer-=delta
 	if(slash_timer<=0):
-		slash_timer = 1
+		slash_timer = slash_cooldown
 		var slash_intance = slash.instantiate()
 		add_child(slash_intance)
 		slash_intance.initialize(Vector2(attack_direction), 300, slash_damage)
@@ -93,3 +100,10 @@ func get_experience(exp_value):
 func level_up():
 	emit_signal("player_level_up", required_level)
 	
+func on_speed_up():
+	speed+=50
+	
+func on_attackspeed_up():
+	if(slash_cooldown>0.3):
+		slash_cooldown-=0.1
+
