@@ -5,7 +5,7 @@ func _on_jogar_pressed():
 
 
 func _on_controles_pressed():
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://interface/instructions.tscn")
 
 
 func _on_opções_pressed():

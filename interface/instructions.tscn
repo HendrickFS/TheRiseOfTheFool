@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://b2ehn5lvhbqh5"]
+
+[node name="instructions" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Movimentação do personagem: 
+-> Esquerda - \"A\" ou seta direcional esquerda
+-> Direita - \"D\" ou seta direcional direita
+-> Cima - \"W\" ou seta direcional superior
+-> Baixo - \"S\" ou seta direcional inferior
+
+Ataques:
+->  O ataque inicial será lançado para a direção de movimentação periodicamente
+
+Objetivo: 
+-> Sobreviver ao tempo estipulado (mostrado no canto superior esquerdo)
+-> Derrotar inimigos para obter upgrades
+
+Upgrades:
+-> Velocidade: Aumenta a velocidade de movimentação do personagem
+-> Velocidade de ataque: Diminui o intervalo entre os ataques"
