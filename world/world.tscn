@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dn26busx8rdxi" path="res://player/player.tscn" id="1_p82kn"]
 [ext_resource type="Texture2D" uid="uid://cep1l61n5dmgf" path="res://world/assets/Arvore.png" id="2_x4sv4"]
 [ext_resource type="AudioStream" uid="uid://d41w6fclmsg6" path="res://future.ogg" id="4_oiw56"]
-[ext_resource type="PackedScene" uid="uid://dt1rnijwp4318" path="res://enemy/assets/player_experience.tscn" id="5_nn8u4"]
+[ext_resource type="PackedScene" uid="uid://dt1rnijwp4318" path="res://player/player_experience.tscn" id="5_nn8u4"]
 [ext_resource type="PackedScene" uid="uid://baaoy7sdytdch" path="res://player/player_life.tscn" id="6_w0xnf"]
 [ext_resource type="Script" path="res://world/levelup_control.gd" id="8_bgkol"]
 [ext_resource type="Script" path="res://world/scene_ontrol.gd" id="8_xs2jl"]

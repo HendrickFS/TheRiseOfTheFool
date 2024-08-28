@@ -1,12 +1,9 @@
-res://interface/main_menu.tscn
-res://interface/main_menu.gd
-res://player/player.tscn
 res://world/world.tscn
-res://enemy/chaser.tscn
-res://enemy/utilities/spawner.tscn
-res://player/attacks/slash.tscn
-res://items/exp.tscn
-res://interface/game_over.tscn
 res://interface/menu.tscn
 res://interface/game_win.tscn
+res://interface/main_menu.tscn
 res://interface/instructions.tscn
+res://interface/level_menu.tscn
+res://world/levelup_control.gd
+res://player/player.gd
+res://player/player_life.gd

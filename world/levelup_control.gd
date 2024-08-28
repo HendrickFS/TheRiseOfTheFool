@@ -27,8 +27,36 @@ var atackspeed_up = {
 	"signal": "attackspeed_up_signal"
 }
 signal attackspeed_up_signal
+var life_recover = {
+	"label": "Recuperação de vida",
+	"text": "Recupere parte de sua
+	vida",
+	"signal": "life_recover_signal"
+}
+signal life_recover_signal
+var life_increase = {
+	"label": "Aumento de vida",
+	"text": "Aumenta sua vida
+	máxima",
+	"signal": "life_increase_signal"
+}
+signal life_increase_signal
+var experience_boost = {
+	"label": "Ganho de EXP",
+	"text": "Aumenta seu ganho de
+	experiência",
+	"signal": "experience_boost_signal"
+}
+signal experience_boost_signal
+var aerial_slash = {
+	"label": "Ataque aéreo",
+	"text": "Ganhe um novo ataque",
+	"signal": "aerial_slash_signal"
+}
+signal aerial_slash_signal
 
-var power_ups = [speed_up, atackspeed_up]
+var power_ups = [speed_up, atackspeed_up, life_recover, life_increase, experience_boost, aerial_slash]
+var power_ups_count = 6
 var level_power_ups = []
 
 var rng = RandomNumberGenerator.new()
@@ -40,9 +68,9 @@ func _ready():
 		emitter.connect("player_level_up", on_level_up)
 		
 func on_level_up(required_exp):
-	var power_up_01 = power_ups[rng.randi_range(0,1)]
-	var power_up_02 = power_ups[rng.randi_range(0,1)]
-	var power_up_03 = power_ups[rng.randi_range(0,1)]
+	var power_up_01 = power_ups[rng.randi_range(0,power_ups_count-1)]
+	var power_up_02 = power_ups[rng.randi_range(0,power_ups_count-1)]
+	var power_up_03 = power_ups[rng.randi_range(0,power_ups_count-1)]
 	level_power_ups = [power_up_01, power_up_02, power_up_03]
 	name1.text = level_power_ups[0]["label"]
 	desc1.text = level_power_ups[0]["text"]
@@ -58,13 +86,22 @@ func _on_upgrade_01_pressed():
 	hide()
 	get_tree().paused = false
 	emit_signal(level_power_ups[0]["signal"])
+	if level_power_ups[0]["signal"] == "aerial_slash_signal":
+		power_ups.remove(level_power_ups[0])
+		power_ups_count -= 1
 
 func _on_upgrade_02_pressed():
 	hide()
 	get_tree().paused = false
 	emit_signal(level_power_ups[1]["signal"])
+	if level_power_ups[0]["signal"] == "aerial_slash_signal":
+		power_ups.remove(level_power_ups[0])
+		power_ups_count -= 1
 
 func _on_upgrade_03_pressed():
 	hide()
 	get_tree().paused = false
 	emit_signal(level_power_ups[2]["signal"])
+	if level_power_ups[0]["signal"] == "aerial_slash_signal":
+		power_ups.remove(level_power_ups[0])
+		power_ups_count -= 1

@@ -3,6 +3,7 @@ extends CharacterBody2D
 var speed = 150
 var attack_direction = Vector2.ZERO
 
+var slash_flag = false
 var slash_cooldown = 1
 var slash_timer = 1
 var slash_damage = 15
@@ -11,21 +12,31 @@ var slash = load("res://player/attacks/slash.tscn")
 var damage_timer = 1
 var damage_flag = false
 signal player_damage(value)
+signal player_heal(life_value)
+signal life_increase(new_life)
 
+var max_life = 100
 var life = 100
+
 var experience = 0
+var experience_multiplier = 1
+
 var level = 0
 var required_level = 100 * (1.5)**level #100 é o custo base para passar nivel, a cada nivel o custo do nivel anterior ira ser multiplicado por 1.5
+
 signal experience_obtained(exp_value)
 signal player_level_up(new_exp_required)
 
 @onready var _animated_sprite: AnimatedSprite2D = $Sprite2D
-
 @onready var levelup_control = $Camera2D/Control/levelup_control
 
 func _ready():
 	levelup_control.connect("speed_up_signal", on_speed_up)
 	levelup_control.connect("attackspeed_up_signal", on_attackspeed_up)
+	levelup_control.connect("life_recover_signal", on_life_recover)
+	levelup_control.connect("life_increase_signal", on_life_increase)
+	levelup_control.connect("experience_boost_signal", on_experience_boost)
+	levelup_control.connect("aerial_slash_signal", on_aerial_slash)
 
 func _physics_process(delta):
 	var input = Input.get_vector("left", "right", "up", "down")
@@ -89,7 +100,7 @@ func gameover():
 	get_tree().change_scene_to_file("res://interface/game_over.tscn")
 
 func get_experience(exp_value):
-	experience+=exp_value
+	experience+=exp_value * experience_multiplier
 	emit_signal("experience_obtained", experience)
 	if(experience >= required_level):
 		level += 1
@@ -107,3 +118,20 @@ func on_attackspeed_up():
 	if(slash_cooldown>0.3):
 		slash_cooldown-=0.1
 
+func on_life_recover():
+	life+=30
+	if life > max_life:
+		life = max_life
+	emit_signal("player_heal", life)
+
+func on_life_increase():
+	max_life+=30
+	life+=30
+	emit_signal("life_increase", max_life)
+	emit_signal("player_heal", life)
+
+func on_experience_boost():
+	experience_multiplier+=0.5
+
+func on_aerial_slash():
+	slash_flag = true
