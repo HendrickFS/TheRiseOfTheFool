@@ -31,12 +31,13 @@ signal player_level_up(new_exp_required)
 @onready var levelup_control = $Camera2D/Control/levelup_control
 
 func _ready():
-	levelup_control.connect("speed_up_signal", on_speed_up)
-	levelup_control.connect("attackspeed_up_signal", on_attackspeed_up)
-	levelup_control.connect("life_recover_signal", on_life_recover)
-	levelup_control.connect("life_increase_signal", on_life_increase)
-	levelup_control.connect("experience_boost_signal", on_experience_boost)
-	levelup_control.connect("aerial_slash_signal", on_aerial_slash)
+	if (levelup_control != null):
+		levelup_control.connect("speed_up_signal", on_speed_up)
+		levelup_control.connect("attackspeed_up_signal", on_attackspeed_up)
+		levelup_control.connect("life_recover_signal", on_life_recover)
+		levelup_control.connect("life_increase_signal", on_life_increase)
+		levelup_control.connect("experience_boost_signal", on_experience_boost)
+		levelup_control.connect("aerial_slash_signal", on_aerial_slash)
 
 func _physics_process(delta):
 	var input = Input.get_vector("left", "right", "up", "down")

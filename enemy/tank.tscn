@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bc6pb1ocj7bqw"]
+
+[ext_resource type="Texture2D" uid="uid://b1k03xjpgxo3" path="res://enemy/assets/mulaSemCabeca.png" id="1_fu0ap"]
+[ext_resource type="Script" path="res://enemy/tank.gd" id="1_vnpam"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tg1d3"]
+size = Vector2(65.9854, 90.1146)
+
+[node name="tank" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 10
+script = ExtResource("1_vnpam")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(5, -4)
+scale = Vector2(3, 3)
+texture = ExtResource("1_fu0ap")
+hframes = 2
+vframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-13.9623, 14.122)
+rotation = -1.57367
+shape = SubResource("RectangleShape2D_tg1d3")

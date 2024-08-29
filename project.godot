@@ -15,6 +15,10 @@ run/main_scene="res://interface/menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Global="*res://utils/Global.gd"
+
 [dotnet]
 
 project/assembly_name="The Rise Of The Fool"

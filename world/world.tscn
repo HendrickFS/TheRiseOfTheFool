@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://bpeeucvou1ypq"]
+[gd_scene load_steps=17 format=3 uid="uid://bpeeucvou1ypq"]
 
 [ext_resource type="PackedScene" uid="uid://b0ii2ky1kdvy5" path="res://enemy/utilities/spawner.tscn" id="1_4xxv1"]
+[ext_resource type="Script" path="res://world/world.gd" id="1_7w6ni"]
 [ext_resource type="Texture2D" uid="uid://cq8i3u02pgvfx" path="res://world/assets/Cenario1.png" id="1_44nia"]
 [ext_resource type="PackedScene" uid="uid://dn26busx8rdxi" path="res://player/player.tscn" id="1_p82kn"]
 [ext_resource type="Texture2D" uid="uid://cep1l61n5dmgf" path="res://world/assets/Arvore.png" id="2_x4sv4"]
@@ -54,6 +55,7 @@ font_size = 13
 font_size = 25
 
 [node name="world" type="Node2D"]
+script = ExtResource("1_7w6ni")
 
 [node name="background" type="TextureRect" parent="."]
 offset_left = -4080.0

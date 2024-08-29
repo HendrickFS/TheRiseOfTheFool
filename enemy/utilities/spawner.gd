@@ -3,18 +3,19 @@ extends Node2D
 @onready var player = get_node("/root/world/player")
 
 var chaser = load("res://enemy/chaser.tscn")
-var chaser_count = 0
+var tank = load("res://enemy/tank.tscn")
+var enemies = [chaser, tank]
+var rng = RandomNumberGenerator.new()
 
 var timer = 5
-
 func _process(delta):
 	timer-=delta
 	if(timer<=0):
 		timer = 5
-		var enemy_spawned = chaser.instantiate()
+		var choice = randi_range(0, enemies.size()-1)
+		var enemy_spawned = enemies[choice].instantiate()
 		enemy_spawned.global_position = random_position()
 		add_child(enemy_spawned)
-		chaser_count+=1
 		
 func random_position():
 	var player_position = player.global_position
@@ -23,7 +24,6 @@ func random_position():
 	var minimum_y = player_position.y - 400
 	var maximum_y = player_position.y + 400
 	
-	var rng = RandomNumberGenerator.new()
 	var x = rng.randi_range(minimum_x, maximum_x)
 	var y = 0
 	if (x > (player_position.x - 556) and x < (player_position.x + 556)):

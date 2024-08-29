@@ -1,12 +1,13 @@
+res://interface/assets
+res://utils
+res://enemy
 res://interface
 res://player/assets
-res://interface/assets
 res://player
 res://world/assets
 res://enemy/assets
 res://items
 res://player/attacks
 res://enemy/utilities
-res://enemy
 res://world
 res://
