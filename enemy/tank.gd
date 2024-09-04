@@ -7,6 +7,12 @@ var damage = 20
 var exp_value = 30
 var exp = load("res://items/exp.tscn")
 
+var assets = [
+	"res://enemy/assets/mulaSemCabeca.png",
+	"res://enemy/assets/Cuca.png",
+	"res://enemy/assets/bicho_papao.png"
+]
+
 func _physics_process(delta):
 	
 	var direction = global_position.direction_to(player.global_position)

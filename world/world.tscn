@@ -58,9 +58,9 @@ font_size = 25
 script = ExtResource("1_7w6ni")
 
 [node name="background" type="TextureRect" parent="."]
-offset_left = -4080.0
+offset_left = -4595.0
 offset_top = -2421.0
-offset_right = 5890.0
+offset_right = 5375.0
 offset_bottom = 3191.0
 texture = ExtResource("1_44nia")
 stretch_mode = 1

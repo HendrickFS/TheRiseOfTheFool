@@ -8,11 +8,20 @@ var exp_value = 15
 var exp = load("res://items/exp.tscn")
 @onready var _animated_sprite: AnimatedSprite2D = $Sprite2D
 
+@onready var sprite = $Sprite2D
+var assets = [
+	"res://enemy/assets/Curupira.png",
+	"res://enemy/assets/Boto.png",
+	"res://enemy/assets/Boitata.png"
+]
+
 func _ready():
 	var group_members = get_tree().get_nodes_in_group("attacks")
 	for emitter in group_members:
 		emitter.connect("slash_collision", on_slash_collision)
-		
+	var level_selected = Global.get_level_selected()
+	# Use level_selected para saber qual sprite utilizar
+	
 func _physics_process(delta):
 	
 	var direction = global_position.direction_to(player.global_position)
