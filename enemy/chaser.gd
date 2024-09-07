@@ -39,10 +39,20 @@ func _physics_process(delta):
 func _animate_chaser():
 	if(velocity.x > 0):
 		_animated_sprite.flip_h = false
-		_animated_sprite.play("curupira_walk")
+		_change_chaser()
 	else:
 		_animated_sprite.flip_h = true
+		_change_chaser()
+		
+
+func _change_chaser():
+	var level = Global.get_level_selected()
+	if(level==1):
 		_animated_sprite.play("curupira_walk")
+	elif(level==2):
+		_animated_sprite.play("boto_walk")
+	elif(level==3):
+		_animated_sprite.play("boitata_walk")
 
 func death(life_depleted):
 	life-=life_depleted

@@ -1,7 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://c5sgcn4tdk74a"]
+[gd_scene load_steps=29 format=3 uid="uid://c5sgcn4tdk74a"]
 
 [ext_resource type="Script" path="res://enemy/chaser.gd" id="1_cl04m"]
+[ext_resource type="Texture2D" uid="uid://bhyb2rneamfjo" path="res://enemy/assets/boitata.png" id="2_8jlen"]
 [ext_resource type="Texture2D" uid="uid://qyomoasfqrmy" path="res://enemy/assets/Curupira.png" id="2_pamqf"]
+[ext_resource type="Texture2D" uid="uid://cn2wa5b3lb35d" path="res://enemy/assets/Boto.png" id="3_m6q55"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pdavc"]
 bg_color = Color(0.368627, 0.0313726, 0, 1)
@@ -9,6 +11,50 @@ corner_radius_top_left = 25
 corner_radius_top_right = 25
 corner_radius_bottom_right = 25
 corner_radius_bottom_left = 25
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opain"]
+atlas = ExtResource("2_8jlen")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iuhio"]
+atlas = ExtResource("2_8jlen")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_it8v7"]
+atlas = ExtResource("2_8jlen")
+region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ugav"]
+atlas = ExtResource("2_8jlen")
+region = Rect2(48, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ao058"]
+atlas = ExtResource("2_8jlen")
+region = Rect2(0, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eo2r6"]
+atlas = ExtResource("3_m6q55")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5m1gx"]
+atlas = ExtResource("3_m6q55")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v54ek"]
+atlas = ExtResource("3_m6q55")
+region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mcg5q"]
+atlas = ExtResource("3_m6q55")
+region = Rect2(48, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sa4ok"]
+atlas = ExtResource("3_m6q55")
+region = Rect2(96, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3jpuf"]
+atlas = ExtResource("3_m6q55")
+region = Rect2(0, 96, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ge1jx"]
 atlas = ExtResource("2_pamqf")
@@ -38,6 +84,49 @@ region = Rect2(0, 96, 48, 48)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_opain")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iuhio")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_it8v7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ugav")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ao058")
+}],
+"loop": true,
+"name": &"boitata_walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eo2r6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5m1gx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v54ek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mcg5q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sa4ok")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3jpuf")
+}],
+"loop": true,
+"name": &"boto_walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ge1jx")
 }, {
 "duration": 1.0,
@@ -61,7 +150,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h3026"]
-size = Vector2(26, 42)
+size = Vector2(48, 50)
 
 [sub_resource type="Animation" id="Animation_fr2fo"]
 length = 0.001
@@ -138,14 +227,12 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_pdavc")
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(-1, -22)
-scale = Vector2(2, 2)
+scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_pejhy")
-animation = &"curupira_walk"
-frame = 1
-frame_progress = 0.408224
+animation = &"boitata_walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -5)
+position = Vector2(0, -7)
 shape = SubResource("RectangleShape2D_h3026")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

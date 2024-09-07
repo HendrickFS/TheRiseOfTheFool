@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmojltcrityqq"]
+
+[ext_resource type="Script" path="res://enemy/sniper.gd" id="1_8bnuo"]
+[ext_resource type="Texture2D" uid="uid://b2mf8d5qy5i8j" path="res://enemy/assets/Saci.png" id="1_qbs2i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xdw25"]
+size = Vector2(38, 63)
+
+[node name="sniper" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_8bnuo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -9)
+scale = Vector2(3, 3)
+texture = ExtResource("1_qbs2i")
+hframes = 2
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 16.5)
+shape = SubResource("RectangleShape2D_xdw25")

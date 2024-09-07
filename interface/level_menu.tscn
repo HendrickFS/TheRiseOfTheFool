@@ -6,6 +6,11 @@
 [node name="levelMenu" type="Node2D"]
 script = ExtResource("1_8st3w")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1156.0
+offset_bottom = 649.0
+color = Color(0.119356, 0.15213, 0.373468, 1)
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(540, 151)
 scale = Vector2(1.1, 1)

@@ -6,6 +6,7 @@ var life = 40
 var damage = 20
 var exp_value = 30
 var exp = load("res://items/exp.tscn")
+@onready var _animated_sprite: AnimatedSprite2D = $Sprite2D
 
 var assets = [
 	"res://enemy/assets/mulaSemCabeca.png",
@@ -25,6 +26,25 @@ func _physics_process(delta):
 			collision.get_collider().damage(damage)
 			position -= direction 
 			
+	_animate_tank() 
+
+func _animate_tank():
+	if(velocity.x > 0):
+		_animated_sprite.flip_h = false
+		_change_tank()
+	else:
+		_animated_sprite.flip_h = true
+		_change_tank()
+		
+func _change_tank():
+	var level = Global.get_level_selected()
+	if(level==1):
+		_animated_sprite.play("mula_walk")
+	elif(level==2):
+		_animated_sprite.play("cuca_walk")
+	elif(level==3):
+		_animated_sprite.play("bichopapao_walk")
+			
 func death(life_depleted):
 	print("dano")
 	life-=life_depleted
@@ -34,3 +54,7 @@ func death(life_depleted):
 		exp_instance.initialize(exp_value)
 		get_parent().add_child(exp_instance)
 		queue_free()
+	else:
+		$AnimationPlayer.play("damage") # inimigo pisca vermelho quando toma dano
+		await get_tree().create_timer(0.6).timeout
+		$AnimationPlayer.play("normal")

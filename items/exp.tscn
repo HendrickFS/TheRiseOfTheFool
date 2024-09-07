@@ -11,7 +11,7 @@ corner_radius_bottom_right = 25
 corner_radius_bottom_left = 25
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pw38y"]
-radius = 5.0
+radius = 10.0499
 
 [node name="exp" type="Area2D" groups=["experience"]]
 collision_layer = 2
@@ -21,7 +21,7 @@ script = ExtResource("1_1niy4")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(-1, 0)
-scale = Vector2(0.958333, 0.979167)
+scale = Vector2(2.625, 1.84375)
 texture = ExtResource("2_7hwrw")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
@@ -38,6 +38,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_hwi1q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 0)
 shape = SubResource("CircleShape2D_pw38y")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

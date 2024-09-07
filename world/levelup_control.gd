@@ -12,46 +12,56 @@ var names = [name1, name2, name3]
 @onready var desc2 = $upgrades_container/HBoxContainer2/VBoxContainer/Label2
 @onready var desc3 = $upgrades_container/HBoxContainer3/VBoxContainer/Label2
 var descriptions = [desc1, desc2, desc3]
+@onready var img01 = $upgrades_container/HBoxContainer/item_sprite
+@onready var img02 = $upgrades_container/HBoxContainer2/item_sprite
+@onready var img03 = $upgrades_container/HBoxContainer3/item_sprite
+var images = [img01, img02, img03]
 
 var speed_up = {
 	"label": "Velocidade",
 	"text": "Aumenta sua velocidade de 
 	movimentação",
-	"signal": "speed_up_signal"
+	"signal": "speed_up_signal",
+	"sprite": 3
 }
 signal speed_up_signal
 var atackspeed_up = {
 	"label": "Velocidade de ataque",
 	"text": "Aumenta sua velocidade de 
 	ataque",
-	"signal": "attackspeed_up_signal"
+	"signal": "attackspeed_up_signal",
+	"sprite": 4
 }
 signal attackspeed_up_signal
 var life_recover = {
 	"label": "Recuperação de vida",
 	"text": "Recupere parte de sua
 	vida",
-	"signal": "life_recover_signal"
+	"signal": "life_recover_signal",
+	"sprite": 1
 }
 signal life_recover_signal
 var life_increase = {
 	"label": "Aumento de vida",
 	"text": "Aumenta sua vida
 	máxima",
-	"signal": "life_increase_signal"
+	"signal": "life_increase_signal",
+	"sprite": 0
 }
 signal life_increase_signal
 var experience_boost = {
 	"label": "Ganho de EXP",
 	"text": "Aumenta seu ganho de
 	experiência",
-	"signal": "experience_boost_signal"
+	"signal": "experience_boost_signal",
+	"sprite": 2
 }
 signal experience_boost_signal
 var aerial_slash = {
 	"label": "Ataque aéreo",
 	"text": "Ganhe um novo ataque",
-	"signal": "aerial_slash_signal"
+	"signal": "aerial_slash_signal",
+	"sprite": 5
 }
 signal aerial_slash_signal
 
@@ -74,10 +84,13 @@ func on_level_up(required_exp):
 	level_power_ups = [power_up_01, power_up_02, power_up_03]
 	name1.text = level_power_ups[0]["label"]
 	desc1.text = level_power_ups[0]["text"]
+	img01.frame = level_power_ups[0]["sprite"]
 	name2.text = level_power_ups[1]["label"]
 	desc2.text = level_power_ups[1]["text"]
+	img02.frame = level_power_ups[1]["sprite"]
 	name3.text = level_power_ups[2]["label"]
 	desc3.text = level_power_ups[2]["text"]
+	img03.frame = level_power_ups[2]["sprite"]
 	show()
 	get_tree().paused = true
 
@@ -87,7 +100,7 @@ func _on_upgrade_01_pressed():
 	get_tree().paused = false
 	emit_signal(level_power_ups[0]["signal"])
 	if level_power_ups[0]["signal"] == "aerial_slash_signal":
-		power_ups.remove(level_power_ups[0])
+		power_ups.remove_at(level_power_ups[0])
 		power_ups_count -= 1
 
 func _on_upgrade_02_pressed():

@@ -138,7 +138,7 @@ size = Vector2(39, 63)
 
 [node name="player" type="CharacterBody2D" groups=["player"]]
 texture_filter = 1
-collision_layer = 2
+collision_layer = 3
 collision_mask = 5
 script = ExtResource("1_jimce")
 

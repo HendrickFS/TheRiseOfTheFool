@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://bewerpqdslyth"]
+
+[ext_resource type="Script" path="res://enemy/enemy_slash.gd" id="1_i2xcq"]
+[ext_resource type="Texture2D" uid="uid://beo3uupahpjfc" path="res://enemy/assets/enemy_slash.png" id="1_jgu2a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sevvj"]
+size = Vector2(59, 9)
+
+[node name="enemy_slash" type="Area2D" groups=["enemy_attacks"]]
+rotation = 0.00383832
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_i2xcq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, 1)
+rotation = 1.55672
+scale = Vector2(1.45313, 1.3125)
+texture = ExtResource("1_jgu2a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 2.5)
+rotation = 1.55672
+shape = SubResource("RectangleShape2D_sevvj")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

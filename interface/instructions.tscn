@@ -1,6 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2ehn5lvhbqh5"]
+[gd_scene load_steps=7 format=3 uid="uid://b2ehn5lvhbqh5"]
 
+[ext_resource type="Script" path="res://interface/instructions.gd" id="1_67lx4"]
 [ext_resource type="PackedScene" uid="uid://dn26busx8rdxi" path="res://player/player.tscn" id="1_laxb3"]
+[ext_resource type="AudioStream" uid="uid://b6t1ggbeewh68" path="res://sea_theme_1.wav" id="2_a46qr"]
+[ext_resource type="Texture2D" uid="uid://cq8i3u02pgvfx" path="res://world/assets/Cenario1.png" id="3_4qywo"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_c0toi"]
 a = Vector2(0, 286)
@@ -9,29 +12,24 @@ a = Vector2(0, 286)
 a = Vector2(-358, 8)
 
 [node name="instructions" type="Node2D"]
+script = ExtResource("1_67lx4")
 
 [node name="player" parent="." instance=ExtResource("1_laxb3")]
 position = Vector2(882, 167)
 
 [node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Movimentação do personagem: 
--> Esquerda - \"A\" ou seta direcional esquerda
--> Direita - \"D\" ou seta direcional direita
--> Cima - \"W\" ou seta direcional superior
--> Baixo - \"S\" ou seta direcional inferior
-
-Ataques:
-->  O ataque inicial será lançado para a direção de movimentação periodicamente
-
-Objetivo: 
--> Sobreviver ao tempo estipulado (mostrado no canto superior esquerdo)
--> Derrotar inimigos para obter upgrades
-
-Upgrades:
--> Velocidade: Aumenta a velocidade de movimentação do personagem
--> Velocidade de ataque: Diminui o intervalo entre os ataques"
+offset_left = 227.0
+offset_top = 15.0
+offset_right = 502.0
+offset_bottom = 80.0
+theme_override_colors/font_color = Color(0, 0.235294, 0.682353, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0.470588, 1)
+theme_override_constants/shadow_offset_x = -1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 47
+text = "Controles
+"
+uppercase = true
 
 [node name="RigidBody2D" type="CharacterBody2D" parent="."]
 position = Vector2(743, 18)
@@ -56,3 +54,123 @@ position = Vector2(1106, 293)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D4"]
 shape = SubResource("SegmentShape2D_kmxpe")
+
+[node name="bg_music_menu" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_a46qr")
+autoplay = true
+
+[node name="Cenario1" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(538, 343)
+scale = Vector2(3, 3)
+texture = ExtResource("3_4qywo")
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 36.0
+offset_top = 115.0
+offset_right = 403.0
+offset_bottom = 165.0
+theme_override_colors/font_color = Color(0.545098, 0.894118, 0.4, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 24
+text = "Movimentação do personagem:"
+
+[node name="Label6" type="Label" parent="."]
+offset_left = 36.0
+offset_top = 396.0
+offset_right = 403.0
+offset_bottom = 446.0
+theme_override_colors/font_color = Color(0.545098, 0.894118, 0.4, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 24
+text = "Objetivo:"
+
+[node name="Label4" type="Label" parent="."]
+offset_left = 33.0
+offset_top = 313.0
+offset_right = 400.0
+offset_bottom = 363.0
+theme_override_colors/font_color = Color(0.545098, 0.894118, 0.4, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 24
+text = "Ataques:"
+
+[node name="Label8" type="Label" parent="."]
+offset_left = 35.0
+offset_top = 518.0
+offset_right = 402.0
+offset_bottom = 568.0
+theme_override_colors/font_color = Color(0.545098, 0.894118, 0.4, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 24
+text = "Upgrades:"
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 37.0
+offset_top = 151.0
+offset_right = 298.0
+offset_bottom = 303.0
+theme_override_colors/font_color = Color(0, 0, 0.643137, 1)
+theme_override_colors/font_shadow_color = Color(0.227633, 0.233347, 0.682261, 1)
+theme_override_constants/shadow_offset_x = -1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 25
+text = "Esquerda:   🄰 ou 🠈
+Direita:        🄳  ou 🠊 
+Cima:           🅆 ou 🠉
+Baixo:          🅂 ou 🠋 "
+
+[node name="Label7" type="Label" parent="."]
+offset_left = 32.0
+offset_top = 438.0
+offset_right = 293.0
+offset_bottom = 590.0
+theme_override_colors/font_color = Color(0, 0, 0.643137, 1)
+theme_override_colors/font_shadow_color = Color(0.227633, 0.233347, 0.682261, 1)
+theme_override_constants/shadow_offset_x = -1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 25
+text = "✔ Sobreviver ao tempo estipulado (mostrado no canto superior esquerdo)
+✔ Derrotar inimigos para obter upgrades"
+
+[node name="Label9" type="Label" parent="."]
+offset_left = 36.0
+offset_top = 555.0
+offset_right = 947.0
+offset_bottom = 707.0
+theme_override_colors/font_color = Color(0, 0, 0.643137, 1)
+theme_override_colors/font_shadow_color = Color(0.227633, 0.233347, 0.682261, 1)
+theme_override_constants/shadow_offset_x = -1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 25
+text = "⮝ Velocidade: Aumenta a velocidade de movimentação do personagem
+⮝ Velocidade de ataque: Diminui o intervalo entre os ataques"
+
+[node name="Label5" type="Label" parent="."]
+offset_left = 34.0
+offset_top = 351.0
+offset_right = 295.0
+offset_bottom = 503.0
+theme_override_colors/font_color = Color(0, 0, 0.643137, 1)
+theme_override_colors/font_shadow_color = Color(0.227633, 0.233347, 0.682261, 1)
+theme_override_constants/shadow_offset_x = -1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 25
+text = "O ataque inicial será lançado para a direção de movimentação periodicamente"
+
+[node name="Sair" type="Button" parent="."]
+offset_left = 961.0
+offset_top = 590.0
+offset_right = 1135.0
+offset_bottom = 621.0
+text = "Voltar"
+
+[connection signal="pressed" from="Sair" to="." method="_on_sair_pressed"]

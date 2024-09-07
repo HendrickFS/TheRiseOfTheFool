@@ -11,4 +11,9 @@ func _ready():
 	level_selected = Global.get_level_selected()
 	print(level_selected)
 	background.texture = load(backgrounds[level_selected-1])
-	
+	if(level_selected==1):
+		$bg_music_lvl_1.play()
+	elif(level_selected==2):
+		$bg_music_lvl_2.play()
+	elif(level_selected==3):
+		$bg_music_lvl_3.play()

@@ -4,13 +4,19 @@ var speed = 150
 var attack_direction = Vector2.ZERO
 
 var slash_flag = false
-var slash_cooldown = 1
-var slash_timer = 1
+var slash_cooldown = 4
+var slash_timer = 4
 var slash_damage = 15
 var slash = load("res://player/attacks/slash.tscn")
+var slash_direction = [Vector2(0,-1),Vector2(1, -1), Vector2(1, 0), Vector2(1, 1), Vector2(0, 1), Vector2(-1, 1), Vector2(-1, 0), Vector2(-1, -1)]
+
+var attack = load("res://player/attacks/attack.tscn")
+var attack_timer = 1
+var attack_cooldown = 1
+var attack_damage = 20
 
 var damage_timer = 1
-var damage_flag = false
+var damage_flag = true
 signal player_damage(value)
 signal player_heal(life_value)
 signal life_increase(new_life)
@@ -44,13 +50,22 @@ func _physics_process(delta):
 	#verifica movimento
 	if (input[0] != 0 or input[1] != 0):
 		attack_direction = input
-		
+
+	attack_timer-=delta
+	if(attack_timer<=0):
+		attack_timer = attack_cooldown
+		var attack_instance = attack.instantiate()
+		add_child(attack_instance)
+		attack_instance.initialize(attack_direction, 0, attack_damage)
+
 	slash_timer-=delta
 	if(slash_timer<=0):
 		slash_timer = slash_cooldown
-		var slash_intance = slash.instantiate()
-		add_child(slash_intance)
-		slash_intance.initialize(Vector2(attack_direction), 300, slash_damage)
+		if(slash_flag):
+			for i in range(slash_direction.size()):
+				var slash_intance = slash.instantiate()
+				add_child(slash_intance)
+				slash_intance.initialize(Vector2(slash_direction[i-1]), 300, slash_damage)
 		
 	if damage_flag:
 		damage_timer-=delta
@@ -116,8 +131,8 @@ func on_speed_up():
 	speed+=50
 	
 func on_attackspeed_up():
-	if(slash_cooldown>0.3):
-		slash_cooldown-=0.1
+	if(attack_cooldown>0.3):
+		attack_cooldown-=0.1
 
 func on_life_recover():
 	life+=30

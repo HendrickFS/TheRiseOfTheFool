@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://ck7vi7alydh1c"]
+[gd_scene load_steps=10 format=3 uid="uid://ck7vi7alydh1c"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_nnkda"]
 [ext_resource type="Texture2D" uid="uid://d13kv21pisyt5" path="res://interface/assets/fundo.png" id="2_cxrvm"]
 [ext_resource type="Texture2D" uid="uid://m7lcukmgbdcu" path="res://interface/assets/Fundo_personagem_lobisomem_titulo.png" id="2_ws1lu"]
 [ext_resource type="Texture2D" uid="uid://br3xmrh2qssdj" path="res://interface/assets/Fundo_com_personagem.png" id="3_2ydl3"]
 [ext_resource type="Texture2D" uid="uid://bbvwxh4txfc5r" path="res://interface/assets/Fundo_com_personagem_lobisomem.png" id="4_qybmh"]
+[ext_resource type="AudioStream" uid="uid://b6t1ggbeewh68" path="res://sea_theme_1.wav" id="6_72als"]
 
 [sub_resource type="Animation" id="Animation_fh1ep"]
 length = 0.001
@@ -158,5 +159,9 @@ modulate = Color(1, 1, 1, 0)
 position = Vector2(575, 342)
 scale = Vector2(1.12854, 1.12854)
 texture = ExtResource("2_ws1lu")
+
+[node name="bg_music_menu" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_72als")
+autoplay = true
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
