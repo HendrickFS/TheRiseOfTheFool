@@ -1,24 +1,130 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmojltcrityqq"]
+[gd_scene load_steps=15 format=3 uid="uid://cmojltcrityqq"]
 
 [ext_resource type="Script" path="res://enemy/sniper.gd" id="1_8bnuo"]
 [ext_resource type="Texture2D" uid="uid://b2mf8d5qy5i8j" path="res://enemy/assets/Saci.png" id="1_qbs2i"]
+[ext_resource type="Texture2D" uid="uid://e7jcrlkxssgw" path="res://enemy/assets/Iara.png" id="2_ayate"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_twjgw"]
+atlas = ExtResource("2_ayate")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0es8"]
+atlas = ExtResource("2_ayate")
+region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gjob"]
+atlas = ExtResource("2_ayate")
+region = Rect2(48, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fipjp"]
+atlas = ExtResource("1_qbs2i")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wvy70"]
+atlas = ExtResource("1_qbs2i")
+region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p77s6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_twjgw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i0es8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2gjob")
+}],
+"loop": true,
+"name": &"iara_walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fipjp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wvy70")
+}],
+"loop": true,
+"name": &"saci_walk",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xdw25"]
 size = Vector2(38, 63)
+
+[sub_resource type="Animation" id="Animation_cojb0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_phbsg"]
+resource_name = "damage"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4wmsj"]
+resource_name = "normal"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1yu72"]
+_data = {
+"RESET": SubResource("Animation_cojb0"),
+"damage": SubResource("Animation_phbsg"),
+"normal": SubResource("Animation_4wmsj")
+}
 
 [node name="sniper" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_8bnuo")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, -9)
 scale = Vector2(3, 3)
-texture = ExtResource("1_qbs2i")
-hframes = 2
-vframes = 2
+sprite_frames = SubResource("SpriteFrames_p77s6")
+animation = &"iara_walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, 16.5)
 shape = SubResource("RectangleShape2D_xdw25")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1yu72")
+}

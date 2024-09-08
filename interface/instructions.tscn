@@ -111,7 +111,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = -1
 theme_override_constants/shadow_offset_y = 1
 theme_override_font_sizes/font_size = 24
-text = "Upgrades:"
+text = "Informações:"
 
 [node name="Label3" type="Label" parent="."]
 offset_left = 37.0
@@ -151,8 +151,8 @@ theme_override_colors/font_shadow_color = Color(0.227633, 0.233347, 0.682261, 1)
 theme_override_constants/shadow_offset_x = -1
 theme_override_constants/shadow_offset_y = 1
 theme_override_font_sizes/font_size = 25
-text = "⮝ Velocidade: Aumenta a velocidade de movimentação do personagem
-⮝ Velocidade de ataque: Diminui o intervalo entre os ataques"
+text = "⮝ Complete cada fase para desbloquear as próximas
+⮝ Altere o tempo de sobrevivencia no menu opções"
 
 [node name="Label5" type="Label" parent="."]
 offset_left = 34.0

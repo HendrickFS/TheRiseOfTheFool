@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=3 uid="uid://rc1dj0hdh7ie"]
+
+[ext_resource type="Script" path="res://interface/options.gd" id="1_a6aj8"]
+[ext_resource type="Texture2D" uid="uid://btjowgygv0dre" path="res://interface/assets/Titulo.png" id="2_0fu0i"]
+
+[node name="options" type="Node2D"]
+script = ExtResource("1_a6aj8")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1156.0
+offset_bottom = 649.0
+color = Color(0.119356, 0.15213, 0.373468, 1)
+
+[node name="time" type="Label" parent="."]
+offset_left = 569.0
+offset_top = 84.0
+offset_right = 936.0
+offset_bottom = 118.0
+theme_override_colors/font_color = Color(0.552941, 0.439216, 0.101961, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/font_size = 24
+text = "Tempo de sobrevivencia:"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(260, 300)
+scale = Vector2(4.88864, 4.88864)
+texture = ExtResource("2_0fu0i")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+offset_left = 574.0
+offset_top = 134.0
+offset_right = 658.0
+offset_bottom = 200.0
+
+[node name="2min2" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "2 minutos"
+
+[node name="5min" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "5 minutos"
+
+[node name="10min" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "10 minutos (padrão)"
+
+[node name="voltar" type="Button" parent="."]
+offset_left = 713.0
+offset_top = 544.0
+offset_right = 768.0
+offset_bottom = 575.0
+text = "Voltar
+"
+
+[connection signal="pressed" from="HBoxContainer/2min2" to="." method="_on_min_2_pressed"]
+[connection signal="pressed" from="HBoxContainer/5min" to="." method="_on_min_5_pressed"]
+[connection signal="pressed" from="HBoxContainer/10min" to="." method="_on_min_10_pressed"]
+[connection signal="pressed" from="voltar" to="." method="_on_voltar_pressed"]

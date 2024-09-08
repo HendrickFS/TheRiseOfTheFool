@@ -6,7 +6,7 @@ var life = 15
 var damage = 10
 var exp_value = 15
 var exp = load("res://items/exp.tscn")
-#@onready var _animated_sprite: AnimatedSprite2D = $Sprite2D
+@onready var _animated_sprite: AnimatedSprite2D = $Sprite2D
 
 var attack = load("res://enemy/enemy_slash.tscn")
 var attack_timer = 1.5
@@ -44,25 +44,23 @@ func _physics_process(delta):
 			collision.get_collider().damage(damage)
 			position -= direction 
 	
-	#_animate_chaser() 
+	_animate_chaser() 
 
-#func _animate_chaser():
-	#if(velocity.x > 0):
-		#_animated_sprite.flip_h = false
-		#_change_chaser()
-	#else:
-		#_animated_sprite.flip_h = true
-		#_change_chaser()
+func _animate_chaser():
+	if(velocity.x > 0):
+		_animated_sprite.flip_h = false
+		_change_chaser()
+	else:
+		_animated_sprite.flip_h = true
+		_change_chaser()
 		
 
-#func _change_chaser():
-	#var level = Global.get_level_selected()
-	#if(level==1):
-		#_animated_sprite.play("curupira_walk")
-	#elif(level==2):
-		#_animated_sprite.play("boto_walk")
-	#elif(level==3):
-		#_animated_sprite.play("boitata_walk")
+func _change_chaser():
+	var level = Global.get_level_selected()
+	if(level==1 || level==3):
+		_animated_sprite.play("saci_walk")
+	elif(level==2):
+		_animated_sprite.play("iara_walk")
 
 func death(life_depleted):
 	life-=life_depleted
@@ -72,7 +70,7 @@ func death(life_depleted):
 		exp_instance.initialize(exp_value)
 		get_parent().add_child(exp_instance)
 		queue_free()
-	#else:
-		#$AnimationPlayer.play("damage") # inimigo pisca vermelho quando toma dano
-		#await get_tree().create_timer(0.6).timeout
-		#$AnimationPlayer.play("normal")
+	else:
+		$AnimationPlayer.play("damage") # inimigo pisca vermelho quando toma dano
+		await get_tree().create_timer(0.6).timeout
+		$AnimationPlayer.play("normal")

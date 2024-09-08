@@ -14,6 +14,9 @@ var attack = load("res://player/attacks/attack.tscn")
 var attack_timer = 1
 var attack_cooldown = 1
 var attack_damage = 20
+var is_attacking = false
+var attack_animation_duration = 0.4
+var attack_animation_timer = 0.0
 
 var damage_timer = 1
 var damage_flag = true
@@ -52,12 +55,19 @@ func _physics_process(delta):
 		attack_direction = input
 
 	attack_timer-=delta
+	attack_animation_timer -= delta
+	
+	if attack_animation_timer <= 0:
+		is_attacking = false
+		
 	if(attack_timer<=0):
 		attack_timer = attack_cooldown
+		attack_animation_timer = attack_animation_duration
 		var attack_instance = attack.instantiate()
 		add_child(attack_instance)
 		attack_instance.initialize(attack_direction, 0, attack_damage)
-
+		is_attacking = true
+	
 	slash_timer-=delta
 	if(slash_timer<=0):
 		slash_timer = slash_cooldown
@@ -80,12 +90,25 @@ func _physics_process(delta):
 	velocity = input * speed
 	
 	move_and_slide()
-	_animate_player() #falta o ataque
+	_animate_player() 
 
 
 func _animate_player():
 	if life <= 0:
 		_animated_sprite.play("player_dies")
+	elif is_attacking:
+		if attack_direction.x == 0:
+			if (attack_direction.y >= 0):
+				_animated_sprite.play("player_attack")
+			else:
+				_animated_sprite.play("player_attack_back")
+		else:
+			if(attack_direction.x > 0):
+				_animated_sprite.flip_h = false
+				_animated_sprite.play("player_attack_side")
+			else:
+				_animated_sprite.flip_h = true
+				_animated_sprite.play("player_attack_side")
 	else:	
 		if velocity.x == 0:
 			if (velocity.y >= 0):

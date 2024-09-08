@@ -12,6 +12,8 @@ var level_completed = 0
 # 2 -> Segunda fase vencida
 # 3 -> Terceira fase vencida
 
+var minutes = 10
+
 func _ready():
 	print("Global loaded")
 
@@ -28,3 +30,9 @@ func set_level_completed(level):
 	level_completed = level
 	print("Level completed: ", level_completed)
 	
+func get_minutes():
+	return minutes
+
+func set_minutes(option_minutes):
+	minutes = option_minutes
+

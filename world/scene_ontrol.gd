@@ -6,6 +6,9 @@ extends Control
 var minutes = 10
 var seconds = 0
 
+func _ready():
+	minutes = Global.get_minutes()
+
 func _process(delta):
 	timer_label.text = str("%02d" % minutes) + ":" + str("%02d" % seconds)
 	if(minutes==0 and seconds==0 ):

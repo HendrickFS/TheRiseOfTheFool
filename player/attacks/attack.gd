@@ -5,7 +5,6 @@ var direction = Vector2(1,1)
 var damage = 0
 var sprite
 @onready var player = get_node("/root/world/player")
-
 signal slash_collision
 
 var timer = 0.5
@@ -24,6 +23,10 @@ func initialize(direction_vector, initial_speed, initial_damage):
 	speed = initial_speed
 	damage = initial_damage
 	rotation = direction.angle()
+
+	
+
+	
 
 
 

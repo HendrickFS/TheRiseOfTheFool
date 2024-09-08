@@ -44,6 +44,11 @@ text = "Jogar"
 layout_mode = 2
 text = "Controles"
 
+[node name="opcoes" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Opções
+"
+
 [node name="Sair" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Sair"
@@ -54,4 +59,5 @@ autoplay = true
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Jogar" to="." method="_on_jogar_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Controles" to="." method="_on_controles_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/opcoes" to="." method="_on_opcoes_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Sair" to="." method="_on_sair_pressed"]
